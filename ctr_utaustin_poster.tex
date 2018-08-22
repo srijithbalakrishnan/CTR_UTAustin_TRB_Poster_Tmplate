@@ -1,0 +1,399 @@
+%  This is unofficial Center of Transportation Research at University of Texas at Austin conference poster template. This is modified version of AAU template provided by Jesper Kjær Nielsen. %
+%  20-11-2017 v. 1.1.0
+%  For more details, contact Srijith Balakrishnan <srijith@utexas.edu>
+%
+%  This is free software: you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation, either version 3 of the License, or
+%  (at your option) any later version.
+%
+%  This is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
+\documentclass[ctrsize,landscape]{baposter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Language, Encoding and Fonts
+% http://en.wikibooks.org/wiki/LaTeX/Internationalization
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Select encoding of your inputs. Depends on
+% your operating system and its default input
+% encoding. Typically, you should use
+%   Linux  : utf8 (most modern Linux distributions)
+%            latin1 
+%   Windows: ansinew
+%            latin1 (works in most cases)
+%   Mac    : applemac
+% Notice that you can manually change the input
+% encoding of your files by selecting "save as"
+% an select the desired input encoding. 
+\usepackage[utf8]{inputenc}
+% Make latex understand and use the typographic
+% rules of the language used in the document.
+\usepackage[english]{babel}
+% Use the vector font Latin Modern which is going
+% to be the default font in latex in the future.
+\usepackage{helvet}
+% Change the default font family from roman to sans serif
+\renewcommand{\familydefault}{\sfdefault} % for text
+\usepackage[helvet]{sfmath} % for math
+% Choose the font encoding
+\usepackage[T1]{fontenc}
+\usepackage[export]{adjustbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Graphics and Tables
+% http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics
+% http://en.wikibooks.org/wiki/LaTeX/Tables
+% http://pgfplots.sourceforge.net/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% You cannot use floats in the baposter theme.
+% We therefore load the caption package which provides
+% the command \captionof
+% Set up how figure and table captions are displayed
+\usepackage{caption}
+\captionsetup{
+  font=small,% set font size to footnotesize
+  labelfont=bf % bold label (e.g., Figure 3.2) font
+}
+% Make the standard latex tables look so much better
+\usepackage{array,booktabs}
+% For creating beautiful plots
+\usepackage{pgfplots}
+\usepackage{stackengine}
+\usepackage[font=small,skip=0pt]{caption}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mathematics
+% http://en.wikibooks.org/wiki/LaTeX/Mathematics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Defines new environments such as equation,
+% align and split 
+\usepackage{amsmath}
+% Adds new math symbols
+\usepackage{amssymb}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{framed}
+\usepackage[export]{adjustbox}
+\usepackage{tcolorbox}
+\usepackage{textcomp}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colours
+% http://en.wikibooks.org/wiki/LaTeX/Colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\selectcolormodel{RGB}
+% define the five UT and CRT colors
+\definecolor{utorange}{RGB}{191, 87, 0}% ut orange
+\definecolor{utblack}{RGB}{51, 63, 72} % utdark
+\definecolor{utgray}{RGB}{214, 210, 196} % utwhite
+\definecolor{ctrblue}{RGB}{49, 169, 223} % utwhite
+\definecolor{ctrblack}{RGB}{128, 128, 128} % utwhite
+\definecolor{utblue}{RGB}{0, 95, 134} % utwhite
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lists
+% http://en.wikibooks.org/wiki/LaTeX/List_Structures
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Easier configuration of lists
+\usepackage{enumitem}
+%configure itemize
+\setlist{%
+  topsep=0pt,% set space before and after list
+  noitemsep,% remove space between items
+  labelindent=\parindent,% set the label indentation to the paragraph indentation
+  leftmargin=*,% remove the left margin
+  font=\color{utorange}\normalfont, %set the colour of all bullets, numbers and descriptions to utorange
+}
+% use set<itemize,enumerate,description> if you have an older latex distribution
+\setitemize[1]{label={\raise1.25pt\hbox{$\blacktriangleright$}}}
+\setitemize[2]{label={\scriptsize\raise1.25pt\hbox{$\blacktriangleright$}}}
+\setitemize[3]{label={\raise1.25pt\hbox{$\star$}}}
+\setitemize[4]{label={-}}
+%\setenumerate[1]{label={\theenumi.}}
+%\setenumerate[2]{label={(\theenumii)}}
+%\setenumerate[3]{label={\theenumiii.}}
+%\setenumerate[4]{label={\theenumiv.}}
+%\setdescription{font=\color{utorange}\normalfont\bfseries}
+
+% use setlist[<itemize,enumerate,description>,<level>] if you have a newer latex distribution
+%\setlist[itemize,1]{label={\raise1.25pt\hbox{$\blacktriangleright$}}}
+%\setlist[itemize,2]{label={\scriptsize\raise1.25pt\hbox{$\blacktriangleright$}}}
+%\setlist[itemize,3]{label={\raise1.25pt\hbox{$\star$}}}
+%\setlist[itemize,4]{label={-}}
+%\setlist[enumerate,1]{label={\theenumi.}}
+%\setlist[enumerate,2]{label={(\theenumii)}}
+%\setlist[enumerate,3]{label={\theenumiii.}}
+%\setlist[enumerate,4]{label={\theenumiv.}}
+%\setlist[description]{font=\color{utorange}\normalfont\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Misc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% change/remove some names
+\addto{\captionsenglish}{
+  %remove the title of the bibliograhpy
+  \renewcommand{\refname}{\vspace{-0.7em}}
+  %change Figure to Fig. in figure captions
+  \renewcommand{\figurename}{Fig.}
+}
+% create links
+\usepackage{url}
+\usepackage{threeparttable}
+%note that the hyperref package is currently incompatible with the baposter class
+%\captionsetup[figure]{box=colorbox,boxcolor=utgray!10,slc=off}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\alert}[1]{{\color{utorange}#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document Start 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some changes that cannot be made in the preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% set the background of the poster
+\background{
+  \begin{tikzpicture}[remember picture,overlay]%
+    %the poster background color
+    \fill[fill=white] (current page.north west) rectangle (current page.south east);
+    %the header
+    \fill [fill=ctrblack] (current page.north west) rectangle ([yshift=-\headerheight] current page.north east);
+  \end{tikzpicture}
+}
+% if you want to reduce the space before and after equations, use and adjust
+% the following lines
+%\addtolength{\abovedisplayskip}{-2mm}
+%\addtolength{\belowdisplayskip}{-2mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General poster setup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{poster}{
+  %general options for the poster
+  grid=false,
+  columns=3,
+%  colspacing=4.2mm,
+  headerheight=0.15\textheight,
+  background= user,
+  %bgColorOne=utblack, %is used when background != user and none
+  %bgColortwo=white, %is used when background is shaded
+  eyecatcher=true,
+  %posterbox options
+  headerborder=closed,
+  borderColor=utgray,
+  headershape=rectangle,
+  headershade=plain,
+  headerColorOne=utorange,
+%  headerColortwo=yellow!42, %is used when the header background is shaded
+  textborder=rectangle,
+  boxshade=plain,
+  boxColorOne=white,
+%  boxColorTwo=cyan!42,%is used when the text background is shaded
+  headerFontColor=white,
+  headerfont=\Large\sf\bf,
+  linewidth=1pt
+}
+%the Eye Catcher (the logo on the left)
+{
+  %this can be commented out or replaced by a company/department logo
+  \begin{minipage}[t][0.9\headerheight][t]{0.15\textwidth}
+  \includegraphics[height=0.75\headerheight]{graphics/ctrlogo.png}
+  \end{minipage}
+}
+%the poster titlehttps://www.sharelatex.com/project/5a1072aa11674f3c50e831fa
+{
+\color{white}\bf
+  \huge {Developing Priority Index for Managing Utility Disruptions in Urban Areas with\\ Focus on Cascading and Interdependent Effects}
+}
+%the author(s)
+{\color{white}
+  \vspace{0.5em} \Large {\textbf{Srijith Balakrishnan$^{\dagger}$ and Zhanmin Zhang, Ph.D.}} \\[0.45em]
+  \normalsize {\normalfont Department of Civil, Architectural and Environmental Engineering, The University of Texas at Austin. $^{\dagger}$Email: srijith@utexas.edu}\\[0.85em]
+  
+  \hspace*{-8.4cm}\noindent\textcolor{ctrblue}{\rule{1.46\textwidth}{4pt}}\\[-0.7em]
+  \hspace*{-8.4cm}\noindent\textcolor{utorange}{\rule{1.46\textwidth}{4pt}}
+  
+}
+%the logo (the logo on the right)
+{
+  this can be commented out or replaced by a company/department logo
+  \begin{minipage}[t][0.9\headerheight][t]{0.15\textwidth}
+  \includegraphics[height=0.75\headerheight]{graphics/utlogo.png}
+  \end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% the actual content of the poster begins here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{posterbox}[name=intro,column=0,row=0]{Introduction}
+\begin{itemize}
+  \item Urban infrastructure consists of multiple components and assumes a "networked structure."
+  \item A single infrastructure failure could trigger multiple failures in dependent systems due to the interdependencies in the urban network, causing widespread disruptions in utility services.
+  \item During such events, urban communities are susceptible to the direct impacts of the event, as well as to prolonged utility disruptions.
+  \item A methodological framework to assess and prioritize communities who are most vulnerable to such utility disruptions arising from disasters does not exist.
+\end{itemize}
+\end{posterbox}
+
+\begin{posterbox}[name=usage,column=0,below=intro]{Methodology}
+    \begin{itemize}
+        \item The direct and indirect impacts of the event on the performance of various utility systems in the infrastructure network are quantified using agent-based modeling (ABM) approach. 
+        \item The exposure of the initial event on the network depends on the structure of the infrastructure network, and the interdependent relationships existing among its various components.
+        \item A sample of building footprint in the study area is obtained, and the utility service disruptions are mapped based on their geographic location.
+        \item The social vulnerability characteristics of communities residing in the affected regions are evaluated using the generic social variables obtained from American Community Survey (ACS) data.
+        \item The normalized exposure of communities to the utility disruptions is combined with the social vulnerability index to develop the priority index for immediate relief operations.
+    \end{itemize}
+    
+    \begin{figure}[H]
+    \captionsetup{justification=raggedright, singlelinecheck=false}
+    \hspace*{2cm}  \includegraphics[width=0.75\textwidth, cfbox=utblack!20 0.5pt 0pt]{graphics/Framework.pdf}
+    \caption*{\scriptsize \textcolor{utblack}{\hspace*{2cm}  {\textbf{Fig 1.}~Methodological Framework for Developing Priority Index}}}
+      \label{fig:Framework}
+    \end{figure}
+    
+\end{posterbox}
+
+\headerbox{}%
+{borderColor=white, name=foottext, column=0, span=3, below = usage, boxheaderheight=0cm}
+ { 
+
+\vspace*{-0.3cm}\hspace*{-2cm}\tikz \fill [ctrblue] (0,0) rectangle (72in, 1cm);
+\node at (47.8,1) {\textcolor{white}{\LARGE collaborate. innovate. educate}};
+}
+
+\begin{posterbox}[name=install,span=1,column=1,row=0]{Mathematical Formulation}
+    \normalsize{\begin{description}
+        \item [Estimation of utility node-level performance]
+    \end{description}}
+    \footnotesize{\begin{equation*}
+    P_{i}(t) = \text{max} \left (0, P_{i}(0) - \left [\sum_{j} \left (  1 - P_{j}(t-\Delta t)\right )w_{ij}  \right ] - \rho_{i}\iota_{i}^{H}\right )
+    \label{eq:realImpact}
+    \end{equation*}}
+    \normalsize{\noindent $P_{i}(0)$ is the initial performance of node $i$, $P_{i}(t)$ is the performance at any time $t$, $\Delta t$ is the simulation step size, $J$ is set of all dependee nodes of $i$, and $\rho$ is an indicator variable, $\iota_{i}^{H}$ is the direct impact of event on $i$, and $w_{ij}$ is the dependency value of $i$ on $j$.}
+    
+    \normalsize{\begin{description}
+        \item [Estimation of census tract-level exposure to utility disruptions]
+        \end{description}}
+    \footnotesize{\begin{equation*}
+     E_{m}=\sum_{K}\left ( 1-P_{K}^{m} \right )\times w_{K}^{m}~:~0\leq E_{m}\leq 1,
+    \label{eq:exposure}
+    \end{equation*}}
+    \normalsize{\noindent $E_{m}$ is the exposure in census tract, $P_{m}^{K}$ is the expected performance of utility $K$ in census tract $m$, and $w_{m}^{K}$ is the corresponding weight.}
+    
+    \normalsize{\begin{description}
+        \item [Census-tract level social vulnerability to utility disruptions]
+    \end{description}}
+    \footnotesize{\begin{equation*}
+    mSVI_{m} = \frac{\sum_{s\in S} s_{m}}{15\times 100};~  mSVI_{m,norm} = \frac{mSVI_{m}}{\text{max}(mSVI_m)}
+    \label{eq:mSVI}
+    \end{equation*}}
+    \normalsize{\noindent $mSVI$ is the modified social vulnerability index and $s\in S$ are the generic social factors (socio-economic factors, household composition and disability, minority status and language, and housing and transportation)} 
+    
+    \normalsize{\begin{description}
+        \item [Calculation of census tract-level Priority Index values]
+    \end{description}}
+    \footnotesize{\begin{equation*}
+     PI_{m}=E_{m}\times mSVI_{m,norm}
+    \label{eq:PI}
+    \end{equation*}}\\[-3em]
+\end{posterbox}
+
+\begin{posterbox}[name=figures,column=1,below=install, above=foottext]{Case Study}
+\begin{description}
+    \item [Infrastructure network, interdependencies and impact propagation]
+\end{description}
+
+    \begin{itemize}
+        \item A semi-realistic network in Austin, Texas consisting of power plants, electrical substations, electrical maintenance service, water treatment plants, hospitals and waste water treatment plants was chosen.
+        \item A water treatment plant node was destroyed, and the interdependent impacts on other nodes in the network are simulated using Anylogic$\textsuperscript{\tiny\textregistered}$ software.
+    \end{itemize}
+    \vspace*{0.5cm}
+   
+   \hspace*{0.4cm}\begin{minipage}{0.2\textwidth}
+    \includegraphics[width = \textwidth, cfbox=utblack!20 0.5pt 0pt]{graphics/dep_network.pdf}
+    \captionof*{figure}{\scriptsize \textcolor{utblack}{\textbf{Fig 2.} Interdependency Model}\\ \textcolor{gray!90}{(arrows represent direction of dependency; values represent the degree of dependency)}}
+    \end{minipage}\hspace*{0.4cm}
+    \begin{minipage}{0.42\textwidth}
+   \includegraphics[width = \textwidth, cfbox=utblack!20 0.5pt 0pt]{graphics/Infra_Map1.pdf}
+   \captionof*{figure}{\scriptsize \textcolor{utblack}{\textbf{Fig 3.}~Semi-realistic Infrastructure Network}\\\textcolor{gray!90}{(initial node failure is represented using red rectangle; the initial failure results in reduction in performance of other nodes due to (inter)dependencies.)}}
+   \end{minipage}\hspace*{0.4cm}
+    \begin{minipage}{0.27\textwidth}
+   \includegraphics[width = \textwidth, cfbox=utblack!20 0.5pt 0pt]{graphics/Perf_timeline.pdf}
+   \captionof*{figure}{\scriptsize \textcolor{utblack}{\textbf{Fig 4.}~Simulated progression of impacts}\\ \textcolor{gray!90}{(when one node fails, the other nodes are also affected due to cascading and interdependent effects)}}
+   \end{minipage}
+\end{posterbox}
+
+\begin{posterbox}[name=problems,column=2,row = 0, headerColorOne=white, headerborder = open]{}
+\vspace*{-0.7cm}
+    \begin{description}
+        \item [Spatial analysis of utility disruptions]
+    \end{description}\vspace*{-0.05cm}
+    \begin{minipage}{0.45\textwidth}
+    \captionsetup{justification=raggedright, singlelinecheck=false}
+          \includegraphics[width=\textwidth, cfbox=utblack!20 0.5pt 0pt]{graphics/Perf_Plots.eps}
+          \captionof*{figure}{\textcolor{utblack}{\scriptsize \textbf{Fig 5.}~Spatial distribution of utility disruptions}}
+          \label{fig:Spatial}
+    \end{minipage} \hspace*{0.1cm}\hfill
+    \begin{minipage}{0.53\textwidth}
+    \begin{itemize}
+    \item The performance reductions in utility nodes are mapped to corresponding service areas.
+    \item The average reductions in each census tract under consideration are calculated.
+    \end{itemize}\vspace*{-0.2cm}
+    \begin{figure}[H]
+          \hspace*{1cm}\includegraphics[width=0.71\textwidth, cfbox=utblack!20 0.5pt 0pt]{graphics/Histogram_Tracts.eps}
+          \captionsetup{justification=raggedright, singlelinecheck=false}
+          \caption*{\hspace*{1cm}\textcolor{utblack}{\scriptsize \textbf{Fig 6.}~Overall distribution of utility disruptions}}
+          \label{fig:Histogram}
+        \end{figure}
+    \end{minipage}
+    \vspace*{0.1cm}
+    \begin{description}
+        \item [Normalized $mSVI$ Values and Weighted Exposure  of Census Tracts]
+    \end{description}\vspace*{-0.4cm}
+    \begin{minipage}{0.45\textwidth}
+        \vspace*{-1cm}\begin{itemize}
+        \item The vulnerability of communities in each census tract is mapped using generic social factors (ACS data).
+        \item The weighted exposure denotes the overall impact of the infrastructure failures in a census tract.
+    \end{itemize}
+    \end{minipage}\hfill
+    \begin{minipage}{0.5\textwidth}
+    \begin{figure}[H]
+    \captionsetup{justification=raggedright, singlelinecheck=false}
+      \includegraphics[width=\textwidth, cfbox=utblack!20 0.5pt 0pt]{graphics/Exposure_SVI.eps}
+      \caption*{\textcolor{utblack}{\scriptsize \textbf{Fig 7.}~(a) Weighted exposure; (b) normalized social vulnerability}}
+      \label{fig:Exposure_SVI}
+    \end{figure}
+    \end{minipage}
+    \vspace*{-0.4cm}
+    \begin{description}
+        \item [Priority Index Values of Census Tracts]
+    \end{description}
+    \begin{minipage}{0.3\textwidth}
+     \begin{figure}[H]
+      \captionsetup{justification=raggedright, singlelinecheck=false}
+      \includegraphics[width=\textwidth, cfbox=utblack!20 0.5pt 0pt]{graphics/Priority_Index.eps}
+      \caption*{\textcolor{utblack}{\scriptsize \textbf{Fig 8.}~Priority Index of census tracts}}
+      \label{fig:PI}
+    \end{figure}
+    \end{minipage}\hfill
+     \begin{minipage}{0.67\textwidth}
+        \vspace*{-1.5cm}\begin{itemize}
+            \item The Priority Index is calculated as the product of weighted exposure and normalized social vulnerability index.
+            \item The higher the value of the index of a census tract, the higher the vulnerability of the communities will be to the given utility system failure.
+        \end{itemize}
+    \end{minipage}
+\end{posterbox}
+
+\begin{posterbox}[name=feedback,column=2,below=problems, above = foottext]{Summary}
+  \begin{itemize}
+    \item The methodology stresses upon the fact that utility disruptions happen not just due to direct impact of disasters, but also due to its cascading and interdependent effects.
+    \item The framework could be employed for emergency planning, as well as for managing immediate relief operations, such as distribution of food, and water during disasters. 
+    \item The redundancy of the infrastructure network and the ability of individual infrastructure nodes to negate the impacts of utility service failures through backup systems are not considered in the current study.
+  \end{itemize}
+\end{posterbox}
+
+
+\end{poster}
+\end{document}
